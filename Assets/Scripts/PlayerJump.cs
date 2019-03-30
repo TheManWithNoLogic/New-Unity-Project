@@ -24,7 +24,7 @@ public class PlayerJump : MonoBehaviour{
     {
         if (Input.GetKeyDown("space") && HasJumped == false && Bottom.Ground_Contact == true)
         {
-            GetComponent<Rigidbody>().velocity = Vector3.up * jumpVelocity;
+            rb.velocity += (Vector3.up * -1 * rb.velocity.y) + (Vector3.up * jumpVelocity);
             HasJumped = true;
             Bottom.Ground_Contact = false;
         }
@@ -48,7 +48,7 @@ public class PlayerJump : MonoBehaviour{
                 rb.AddTorque(0, 0, FlipTorque);
             }
 
-            GetComponent<Rigidbody>().velocity = Vector3.up * doublejumpVelocity;
+            rb.velocity += (Vector3.up * -1 * rb.velocity.y) + (Vector3.up * doublejumpVelocity);
             Debug.Log("Z axis velocity " + rb.velocity.z);
 
             
