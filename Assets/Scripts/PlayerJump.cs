@@ -47,6 +47,18 @@ public class PlayerJump : MonoBehaviour{
             {
                 rb.AddTorque(0, 0, FlipTorque);
             }
+            else
+            {
+                if (Random.Range(-1f, 1f) > 0)
+                {
+                    rb.AddRelativeTorque(0, FlipTorque * Time.deltaTime, 0);
+                }
+                else
+                {
+                    rb.AddRelativeTorque(0, -FlipTorque * Time.deltaTime, 0);
+                }
+         
+            }
 
             rb.velocity += (Vector3.up * -1 * rb.velocity.y) + (Vector3.up * doublejumpVelocity);
             Debug.Log("Z axis velocity " + rb.velocity.z);
